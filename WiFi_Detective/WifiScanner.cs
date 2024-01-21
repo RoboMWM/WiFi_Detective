@@ -32,7 +32,11 @@ namespace WiFi_Detective
         public async Task<List<string>> ScanForNetworks()
         {
             if (this.WiFiAdapter == null)
-                return null;
+            {
+                await InitializeFirstAdapter();
+                if (this.WiFiAdapter == null)
+                    return null;
+            }
 
             await this.WiFiAdapter.ScanAsync();
 
