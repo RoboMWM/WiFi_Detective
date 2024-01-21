@@ -8,7 +8,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock FontSize="36" Grid.RowSpan="2" >Wifi Scanner</TextBlock>
+        <StackPanel Name="spButtons" Grid.Row="1" Orientation="Horizontal">
+            <Button Name="buttonScan" Click="ButtonScan_Click">Scan for networks</Button>
+        </StackPanel>
+        <TextBox Name="textBoxReport" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="2"/>
     </Grid>
 </Page>

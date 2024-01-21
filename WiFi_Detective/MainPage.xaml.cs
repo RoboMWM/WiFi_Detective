@@ -26,5 +26,18 @@ namespace WiFi_Detective
         {
             this.InitializeComponent();
         }
+
+        private async void ButtonScan_Click(object sender, RoutedEventArgs e)
+        {
+            WifiScanner scanner = new WifiScanner();
+            List<string> ssids = await scanner.ScanForNetworks();
+            if (ssids == null)
+            {
+                textBoxReport.Text = "no wireless networks found or no wifi adapter found on device. TODO: make this error better lol";
+                return;
+            }
+            string ssidsFormatted = string.Join(", ", ssids);
+            textBoxReport.Text = ssidsFormatted;
+        }
     }
 }
