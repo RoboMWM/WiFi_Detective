@@ -29,15 +29,20 @@ namespace WiFi_Detective
 
         private async void ButtonScan_Click(object sender, RoutedEventArgs e)
         {
+            listViewAPs.Items.Clear();
+
             WifiScanner scanner = new WifiScanner();
             List<string> ssids = await scanner.ScanForNetworks();
             if (ssids == null)
             {
-                textBoxReport.Text = "no wireless networks found or no wifi adapter found on device. TODO: make this error better lol";
+                ListViewItem item = new ListViewItem();
+                item.Content = "No wireless access points found";
+                listViewAPs.Items.Add(item);
                 return;
             }
-            string ssidsFormatted = string.Join(", ", ssids);
-            textBoxReport.Text = ssidsFormatted;
+
+            foreach (string ssid in ssids)
+                listViewAPs.Items.Add(new ListViewItem().Content = ssid);
         }
     }
 }

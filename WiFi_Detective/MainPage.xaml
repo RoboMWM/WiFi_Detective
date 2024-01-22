@@ -18,6 +18,6 @@
         <StackPanel Name="spButtons" Grid.Row="1" Orientation="Horizontal">
             <Button Name="buttonScan" Click="ButtonScan_Click">Scan for networks</Button>
         </StackPanel>
-        <TextBox Name="textBoxReport" TextWrapping="Wrap" AcceptsReturn="True" Grid.Row="2"/>
+        <ListView Name="listViewAPs" Grid.Row="2"/>
     </Grid>
 </Page>
