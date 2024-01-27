@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="48031RoboMWM.WiFiDetective" Publisher="CN=23340718-5F2B-4B75-BC64-011F769563A6" Version="1.0.0.0" />
+  <Identity Name="48031RoboMWM.WiFiDetective" Publisher="CN=23340718-5F2B-4B75-BC64-011F769563A6" Version="1.0.8.0" />
   <mp:PhoneIdentity PhoneProductId="a0db6546-54c9-4f08-82f6-07cfaf9cb4d3" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>WiFi Detective</DisplayName>
