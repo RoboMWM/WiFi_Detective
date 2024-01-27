@@ -44,6 +44,7 @@ namespace WiFi_Detective
             {
                 await new MessageDialog(ex.Message).ShowAsync();
                 buttonScan.IsEnabled = true;
+                progressScan.IsActive = false;
                 return;
             }
 
