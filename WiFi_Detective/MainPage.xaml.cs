@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -29,10 +30,28 @@ namespace WiFi_Detective
 
         private async void ButtonScan_Click(object sender, RoutedEventArgs e)
         {
+            buttonScan.IsEnabled = false;
             listViewAPs.Items.Clear();
 
             WifiScanner scanner = new WifiScanner();
-            List<string> ssids = await scanner.ScanForNetworks();
+            List<string> ssids;
+            try
+            {
+                ssids = await scanner.ScanForNetworks();
+            }
+            catch (Exception ex)
+            {
+                await new MessageDialog(ex.Message).ShowAsync();
+                buttonScan.IsEnabled = true;
+                return;
+            }
+
+            populateSsids(ssids);
+            buttonScan.IsEnabled = true;
+        }
+
+        private void populateSsids(List<string> ssids)
+        {
             if (ssids == null)
             {
                 ListViewItem item = new ListViewItem();
