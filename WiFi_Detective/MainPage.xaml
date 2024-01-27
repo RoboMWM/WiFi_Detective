@@ -17,6 +17,7 @@
         <TextBlock FontSize="36" Grid.RowSpan="2" >Wifi Scanner</TextBlock>
         <StackPanel Name="spButtons" Grid.Row="1" Orientation="Horizontal">
             <Button Name="buttonScan" Click="ButtonScan_Click">Scan for networks</Button>
+            <ProgressRing Name="progressScan" IsActive="False"/>
         </StackPanel>
         <ListView Name="listViewAPs" Grid.Row="2"/>
     </Grid>

@@ -31,6 +31,7 @@ namespace WiFi_Detective
         private async void ButtonScan_Click(object sender, RoutedEventArgs e)
         {
             buttonScan.IsEnabled = false;
+            progressScan.IsActive = true;
             listViewAPs.Items.Clear();
 
             WifiScanner scanner = new WifiScanner();
@@ -48,6 +49,7 @@ namespace WiFi_Detective
 
             populateSsids(ssids);
             buttonScan.IsEnabled = true;
+            progressScan.IsActive = false;
         }
 
         private void populateSsids(List<string> ssids)
