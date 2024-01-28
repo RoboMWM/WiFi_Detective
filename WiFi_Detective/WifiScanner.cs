@@ -14,6 +14,9 @@ namespace WiFi_Detective
 
         private async Task InitializeFirstAdapter()
         {
+            if (this.WiFiAdapter != null)
+                return;
+
             WiFiAccessStatus access = await WiFiAdapter.RequestAccessAsync();
             if (access != WiFiAccessStatus.Allowed)
             {
@@ -31,12 +34,7 @@ namespace WiFi_Detective
 
         public async Task<List<string>> ScanForNetworks()
         {
-            if (this.WiFiAdapter == null)
-            {
-                await InitializeFirstAdapter();
-                if (this.WiFiAdapter == null)
-                    return null;
-            }
+            await InitializeFirstAdapter();
 
             await this.WiFiAdapter.ScanAsync();
 
@@ -48,6 +46,12 @@ namespace WiFi_Detective
             }
 
             return ssids;
+        }
+
+        public async Task<string> GetAdapterInfo()
+        {
+            await InitializeFirstAdapter();
+            return this.WiFiAdapter.ToString();
         }
     }
 }

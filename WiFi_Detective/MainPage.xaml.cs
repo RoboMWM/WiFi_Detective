@@ -34,7 +34,7 @@ namespace WiFi_Detective
             progressScan.IsActive = true;
             listViewAPs.Items.Clear();
 
-            WifiScanner scanner = new WifiScanner();
+            WifiScanner scanner = new WifiScanner(); //TODO: see below
             List<string> ssids;
             try
             {
@@ -65,6 +65,23 @@ namespace WiFi_Detective
 
             foreach (string ssid in ssids)
                 listViewAPs.Items.Add(new ListViewItem().Content = ssid);
+        }
+
+        private async void AppWifiInfo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await new MessageDialog(await new WifiScanner().GetAdapterInfo()).ShowAsync(); //TODO: instantiate object at page initialization(?) or better yet, app initialization.
+            }
+            catch (Exception ex)
+            {
+                await new MessageDialog(ex.Message).ShowAsync();
+            }
+        }
+
+        private async void AppAbout_Click(object sender, RoutedEventArgs e)
+        {
+            await new MessageDialog(await new WifiScanner().GetAdapterInfo()).ShowAsync(); //TODO: instantiate object at page initialization(?) or better yet, app initialization.
         }
     }
 }
